@@ -1,0 +1,22 @@
+# Local Python environment
+.conda/
+
+# Local credentials and overrides
+common.env
+.env
+*.env.local
+
+# Runtime output
+log/
+output/
+__pycache__/
+*.py[cod]
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local project instructions
+COMMON_PROJECT_SKILLS.md

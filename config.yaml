@@ -1,0 +1,15 @@
+app:
+  log_level: INFO
+  log_dir: log
+  # This personal tool uses one environment. Keep real writes disabled until
+  # the approval-list read flow has been verified.
+  allow_approval_submission: false
+
+feishu:
+  base_url: https://open.feishu.cn
+  credentials:
+    app_id_env: FEISHU_APP_ID
+    app_secret_env: FEISHU_APP_SECRET
+  approval:
+    # Feishu approval instance codes are treated as unique idempotency keys.
+    deduplication_key: instance_code
