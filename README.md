@@ -2,7 +2,7 @@
 
 个人使用的飞书审批同步工具，计划用于自动填报质保审批单、查询审批实例，以及下载质保审批单 PDF。
 
-当前阶段已完成项目基础环境和通用日志配置，飞书业务接口尚未实现。
+当前阶段已完成项目基础环境、通用日志配置、飞书用户 OAuth 授权和用户可见审批定义列表查询。
 
 ## 本地环境
 
@@ -20,6 +20,24 @@ conda activate .\.conda
 3. 在 `config.yaml` 中维护非敏感应用配置。
 
 `common.env`、`.conda/`、日志和运行产物均不会提交到 Git。
+
+## 获取用户可见审批定义
+
+截图中的审批权限属于用户身份权限，因此首次使用需要本人完成 OAuth 授权：
+
+```powershell
+python list_approvals.py --authorize
+```
+
+按终端提示在飞书页面确认授权。令牌会保存到本地 `common.env`，以后可直接运行：
+
+```powershell
+python list_approvals.py
+```
+
+结果默认写入 `output/approval_definitions.json`。
+
+飞书开发者后台需要将 `http://127.0.0.1:8765/callback` 添加到应用的 OAuth 重定向 URL 白名单，且应用版本需要包含对应用户身份权限。
 
 ## 日志
 
