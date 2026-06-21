@@ -8,3 +8,5 @@ dependencies:
   - flake8
   - pip:
       - python-dotenv
+      - httpx
+      - -e .

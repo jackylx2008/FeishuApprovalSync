@@ -7,9 +7,18 @@ app:
 
 feishu:
   base_url: https://open.feishu.cn
+  request_timeout_seconds: 30
   credentials:
     app_id_env: FEISHU_APP_ID
     app_secret_env: FEISHU_APP_SECRET
+  oauth:
+    redirect_uri: http://127.0.0.1:8765/callback
+    callback_timeout_seconds: 300
+    scopes:
+      - serviceaccount:approval:approvals:read
   approval:
+    list_path: /open-apis/approval/v4/approvals
+    page_size: 100
+    output_file: output/approval_definitions.json
     # Feishu approval instance codes are treated as unique idempotency keys.
     deduplication_key: instance_code
